@@ -177,3 +177,51 @@ const flattened = messyArray.reduce(function iter(acc, cur) {
 }, []);
 
 console.log('flattened',flattened);
+
+
+// FIND THE MISSING NUMBER IN AN SEQUENTIAL ARRAY
+// WITHOUT TRAVERSING THE WHOLE ARRAY
+function missingNum(arr, high, low) {
+
+  let mid = (low + high) / 2; // 4
+
+  if (mid !== Math.floor(mid)) {
+    mid = Math.floor(mid);
+  }
+  // console.log('low',low, 'high',high, 'mid',mid, arr)
+
+  if (low === high) {
+    console.log(`The missing number is ${low}`)
+  }else if (arr[mid - 1] === mid) {
+    low = mid + 1;
+    missingNum(arr, low, high);
+  }else {
+    high = mid;
+    missingNum(arr, low, high);
+  }
+}
+missingNum([1,2,3,4,6,7,8], 6, 1);
+
+const builtArr = [...Array(10).keys()];
+console.log(builtArr);
+console.log([...'john'].reverse().join(''));
+
+
+// FIND DUPES IN AN ARRAY
+// CHECK VALUE AT POSITION ARR[i], IF IT'S POSTIVE MAKE IT NEGATIVE
+// IF THERE IS A DUPE WE WILL CHECK THAT POSITION AGAIN
+// THIS TIME IT WILL ALREADY BE NEGATIVE AND WE ADD IT TO THE DUPES ARRAY
+function findDupes(arr) {
+  const dupes = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[Math.abs(arr[i])] > 0) {
+      arr[Math.abs(arr[i])] = -arr[Math.abs(arr[i])];
+    }else {
+      dupes.push(Math.abs(arr[i]));
+    }
+  }
+  console.log(dupes);
+}
+
+findDupes([2,4,1,5,6,6,7,2,4,8,9]);
