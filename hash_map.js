@@ -22,12 +22,12 @@ const people = [
 ];
 
 // multidimensional array of size n
-const hash_table = Array(50).fill().map(() => []);
+const hash_table = Array(people.length).fill().map(() => []);
 
 // function to hash data by summing the char codes of the letters in the input
 function createHash(input) {
   // result of function must not exceed n so f(x) = x % n
-  return input.map(i => i.charCodeAt(0)).reduce((acc, cur) => acc + cur) % 50;
+  return input.map(i => i.charCodeAt(0)).reduce((acc, cur) => acc + cur) % people.length;
 }
 
 // function to insert data into hash_table[hash]
