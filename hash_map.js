@@ -21,7 +21,7 @@ const people = [
   }
 ];
 
-// array of size n
+// multidimensional array of size n
 const hash_table = Array(50).fill().map(() => []);
 
 // function to hash data by summing the char codes of the letters in the input
