@@ -14,6 +14,10 @@ const people = [
   {
     name: 'Robin', // creates hash value of 6
     phone: '5555555555'
+  },
+  {
+    name: 'Robin',
+    phone: '2222222222'
   }
 ];
 
@@ -35,7 +39,7 @@ function intoMap(map, hash, input) {
 function getData(input, map) {
   const data = map[createHash([...input])].filter(item => item.name === input);
 
-  return data[0];
+  return data;
 }
 
 // put the people in the hash_table
