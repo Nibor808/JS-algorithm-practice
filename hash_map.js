@@ -77,7 +77,8 @@
   createNewMap();
 
   function createNewMap(size = people.length**2) {
-    // multidimensional array of size n defaulting to people.length squared ( change default size to people.length**2 + 1 to force collision )
+    // multidimensional array of size n defaulting to people.length squared
+    // change default size to people.length**2 + 1 to force collision
     hash_table = Array(size)
                   .fill()
                   .map(() => []);
@@ -109,11 +110,14 @@
   function intoMap(map, hash, input) {
     map[hash].push(input);
 
-    // if bucket(map[hash]) length is greater then 2, recursively create a new table and rehash data into it until bucket.length < 2
-    // bucket length constraint would be much higher however for this demonstration using 2 to more easily trigger recreation of hash table
+    // if bucket(map[hash]) length is greater then 2,
+    // recursively create a new table and rehash data into it until bucket.length < 2
+    // bucket length constraint would be much higher however for this demonstration
+    // using 2 to more easily trigger recreation of hash table
     if (map[hash].length >= 2) {
 
-      // add +1 so mod hash_table.length in createHash() remains odd increasing diffusion and reducing the need to create new hash_table
+      // add +1 so mod hash_table.length in createHash() remains odd
+      // increasing diffusion and reducing the need to create new hash_table
       createNewMap(map.length * 2 + 1);
     }
   }
