@@ -116,9 +116,9 @@
     // using 2 to more easily trigger recreation of hash table
     if (map[hash].length >= 2) {
 
-      // add +1 so mod hash_table.length in createHash() remains odd
-      // increasing diffusion and reducing the need to create new hash_table
-      createNewMap(map.length * 2 + 1);
+     // double the map.length and recursively create new maps until the bucket length
+     // limit is no longer breached
+      createNewMap(map.length * 2);
     }
   }
 
