@@ -90,7 +90,7 @@
     return hash_table;
   }
 
-  // function to hash data
+  // hash data
   // in reality use md5 to generate hashes
   function createHash(input) {
     // result of function must not exceed n so f(x) = x % n
@@ -106,7 +106,7 @@
         .reduce((acc, cur) => acc + cur) % hash_table.length;
   }
 
-  // function to insert data into hash_table[hash]
+  // insert data into hash_table[hash]
   function intoMap(map, hash, input) {
     map[hash].push(input);
 
@@ -122,11 +122,9 @@
     }
   }
 
-  // function to retrieve data from hash_table
+  // retrieve data from hash_table
   function getData(input, map) {
-    const data = map[createHash([...input])].filter(item => `${item.id}${item.fname}${item.lname}` === input);
-
-    return data;
+    return map[createHash([...input])].filter(item => `${item.id}${item.fname}${item.lname}` === input);
   }
 
   // put the people in the hash_table
