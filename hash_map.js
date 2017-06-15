@@ -115,23 +115,23 @@
     }
   ];
 
-  let hash_table;
+  let hash_map;
 
-  // create initial hash table
+  // create hash map
   createNewMap();
 
   function createNewMap(hashSize = people.length**2) {
     // multidimensional array of size n defaulting to people.length squared
-    hash_table = Array(hashSize)
+    hash_map = Array(hashSize)
                   .fill()
                   .map(() => []);
 
     // add people
     addPeople();
 
-    console.log(`Length of hash_table is ${hash_table.length}`)
+    console.log(`Length of hash_map is ${hash_map.length}`)
 
-    return hash_table;
+    return hash_map;
   }
 
   // hash data
@@ -145,12 +145,12 @@
       // split hex values, get new char codes for each value and mulitply by the input length
       .map(i => i.split('').map(j => (j.charCodeAt(0) * input.length)))
 
-      // flatten array and sum values, get index using mod hash_table.length
+      // flatten array and sum values, get index using mod hash_map.length
       return [].concat.apply([], arr)
-        .reduce((acc, cur) => acc + cur) % hash_table.length;
+        .reduce((acc, cur) => acc + cur) % hash_map.length;
   }
 
-  // insert data into hash_table[hash]
+  // insert data into hash_map[hash]
   function intoMap(map, hash, input) {
     map[hash].push(input);
 
@@ -163,19 +163,19 @@
     }
   }
 
-  // retrieve data from hash_table
+  // retrieve data from hash_map
   function getData(input, map) {
     return map[createHash([...input])].filter(item => `${item.fname}${item.lname}${item.phone}` === input);
   }
 
-  // put the people in the hash_table
+  // put the people in the hash_map
   function addPeople() {
     //create a hash and add it to people before hashing people
     people.map(item => {
-      intoMap(hash_table, createHash([...`${item.fname}${item.lname}${item.phone}`]), item);
+      intoMap(hash_map, createHash([...`${item.fname}${item.lname}${item.phone}`]), item);
     });
   }
 
   // map over people to get data
-  people.map(item => console.log(getData(`${item.fname}${item.lname}${item.phone}`, hash_table)))
+  people.map(item => console.log(getData(`${item.fname}${item.lname}${item.phone}`, hash_map)))
 })();
