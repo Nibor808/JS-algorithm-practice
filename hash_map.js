@@ -4,70 +4,114 @@
 (function() {
   const people = [
     {
-      id: 0,
       fname: 'Jessica',
       lname: 'Hey',
-      phone: '1111111111'
+      phone: '8881111111'
     },
     {
-      id: 1,
       fname: 'Emily',
       lname: 'Hello',
-      phone: '3333333333'
+      phone: '8882222222'
     },
     {
-      id: 2,
       fname: 'Bill',
       lname: 'HiThere',
-      phone: '4444444444'
+      phone: '8883333333'
     },
     {
-      id: 3,
       fname: 'Robin',
       lname: 'GoodDay',
-      phone: '5555555555'
+      phone: '8884444444'
     },
     {
-      id: 4,
       fname: 'Robin',
       lname: 'Hi',
-      phone: '2222222222'
+      phone: '8885555555'
     },
     {
-      id: 5,
       fname: 'Mike',
       lname: 'DaRookie',
-      phone: '6666666666'
+      phone: '8886666666'
     },
     {
-      id: 6,
       fname: 'Sue',
       lname: 'Belchor',
-      phone: '7777777777'
+      phone: '8887777777'
     },
     {
-      id: 7,
       fname: 'Stan',
       lname: 'First',
       phone: '8888888888'
     },
     {
-      id: 8,
       fname: 'Karen',
       lname: 'Collins',
-      phone: '9999999999'
+      phone: '8889999999'
     },
     {
-      id: 9,
       fname: 'Marcy',
       lname: 'May',
-      phone: '1010101010'
+      phone: '8880101010'
     },
     {
-      id: 10,
       fname: 'Marcy',
       lname: 'May',
-      phone: '1212121212'
+      phone: '8882121212'
+    },
+    {
+      fname: 'Jessica',
+      lname: 'Hey',
+      phone: '8883131313'
+    },
+    {
+      fname: 'Emily',
+      lname: 'Hello',
+      phone: '8884141414'
+    },
+    {
+      fname: 'Bill',
+      lname: 'HiThere',
+      phone: '8885151515'
+    },
+    {
+      fname: 'Robin',
+      lname: 'GoodDay',
+      phone: '8886161616'
+    },
+    {
+      fname: 'Robin',
+      lname: 'Hi',
+      phone: '8887171717'
+    },
+    {
+      fname: 'Mike',
+      lname: 'DaRookie',
+      phone: '8888181818'
+    },
+    {
+      fname: 'Sue',
+      lname: 'Belchor',
+      phone: '8889191919'
+    },
+    {
+      fname: 'Stan',
+      lname: 'First',
+      phone: '8880202020'
+    },
+    {
+      fname: 'Karen',
+      lname: 'Collins',
+      phone: '8881212121'
+    },
+    {
+      fname: 'Marcy',
+      lname: 'May',
+      phone: '8883232323'
+    },
+    {
+      fname: 'Martin',
+      lname: 'May',
+      phone: '8883232323'
     }
   ];
 
@@ -76,12 +120,12 @@
   // create initial hash table
   createNewMap();
 
-  function createNewMap(size = people.length**2) {
+  function createNewMap(hashSize = people.length**2) {
     // multidimensional array of size n defaulting to people.length squared
-    // change default size to people.length**2 + 1 to force collision
-    hash_table = Array(size)
+    hash_table = Array(hashSize)
                   .fill()
                   .map(() => []);
+
     // add people
     addPeople();
 
@@ -94,7 +138,7 @@
   // in reality use md5 to generate hashes
   function createHash(input) {
     // result of function must not exceed n so f(x) = x % n
-    // increase complexity to reduce collisions by adding lname and id to hash and doing some random mathematical transforms
+    // increase complexity to reduce collisions by adding lname and phone to hash and doing some random mathematical transforms
 
     const arr = input.map(i => i.charCodeAt(0).toString(16)) // get char codes and convert each to hex string
 
@@ -111,29 +155,27 @@
     map[hash].push(input);
 
     // if bucket(map[hash]) length is >= 2,
-    // recursively create a new table and rehash data into it until bucket.length < 2
+    // double the map.length and recursively create a new table and rehash data into it until bucket.length < 2
     // bucket length constraint would be much higher however for this demonstration
     // using 2 to more easily trigger recreation of hash table
     if (map[hash].length >= 2) {
-
-     // double the map.length and recursively create new maps until the bucket length
-     // limit is no longer breached
       createNewMap(map.length * 2);
     }
   }
 
   // retrieve data from hash_table
   function getData(input, map) {
-    return map[createHash([...input])].filter(item => `${item.id}${item.fname}${item.lname}` === input);
+    return map[createHash([...input])].filter(item => `${item.fname}${item.lname}${item.phone}` === input);
   }
 
   // put the people in the hash_table
   function addPeople() {
+    //create a hash and add it to people before hashing people
     people.map(item => {
-      intoMap(hash_table, createHash([...`${item.id}${item.fname}${item.lname}`]), item);
+      intoMap(hash_table, createHash([...`${item.fname}${item.lname}${item.phone}`]), item);
     });
   }
 
   // map over people to get data
-  people.map(item => console.log(getData(`${item.id}${item.fname}${item.lname}`, hash_table)))
+  people.map(item => console.log(getData(`${item.fname}${item.lname}${item.phone}`, hash_table)))
 })();
