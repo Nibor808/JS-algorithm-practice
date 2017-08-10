@@ -89,7 +89,6 @@ function mutation(arr) {
     }
   }
   console.log('tracker', tracker);
-  console.log('changes to test the merging');
   return tracker;
 }
 mutation(['hello', 'hl']);
@@ -115,11 +114,3 @@ function rot13(str) {
 function blegh() {
   console.log('another test string')
 }
-function blegh() {
-  console.log('another test string')
-}
-function blegh() {
-  console.log('another test string')
-}
-
-// some comments
