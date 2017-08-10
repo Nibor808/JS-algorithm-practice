@@ -117,6 +117,7 @@ function BLARG() {
 function BLARG() {
   console.log('another test string')
 }
-function blergh() {
+
+function BLARGERRRRR() {
   console.log('another test string')
 }
