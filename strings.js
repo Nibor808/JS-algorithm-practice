@@ -110,14 +110,3 @@ function rot13(str) {
   console.log(String.fromCharCode.apply(null, resultArr));
   return String.fromCharCode.apply(null, resultArr);
 }
-
-function BLARG() {
-  console.log('another test string')
-}
-function BLARG() {
-  console.log('another test string')
-}
-
-function BLARGERRRRR() {
-  console.log('another test string')
-}
