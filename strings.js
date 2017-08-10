@@ -111,6 +111,6 @@ function rot13(str) {
   return String.fromCharCode.apply(null, resultArr);
 }
 
-function blegh() {
+function BLARG() {
   console.log('another test string')
 }
