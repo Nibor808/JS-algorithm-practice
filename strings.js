@@ -98,3 +98,5 @@ mutation(['hello', 'hl']);
 function blegh() {
   console.log('another test string')
 }
+
+// some comments
