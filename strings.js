@@ -93,7 +93,23 @@ function mutation(arr) {
 }
 mutation(['hello', 'hl']);
 
+//DECRYPT ROT13 CODED STRING
+function rot13(str) {
+  str = str.split('');
 
+  const resultArr = str.map((item, index) => {
+    if (item.charCodeAt(0) >= 32 && item.charCodeAt(0) <= 64) {
+      return item.charCodeAt(0);
+    }else if (item.charCodeAt(0) - 13 < 65){
+      return item.charCodeAt(0) + 13
+    }else {
+      return item.charCodeAt(0) - 13
+    }
+  });
+
+  console.log(String.fromCharCode.apply(null, resultArr));
+  return String.fromCharCode.apply(null, resultArr);
+}
 
 function BLARG() {
   console.log('another test string')
@@ -101,6 +117,6 @@ function BLARG() {
 function BLARG() {
   console.log('another test string')
 }
-function BLARG() {
+function blergh() {
   console.log('another test string')
 }
