@@ -109,7 +109,7 @@ function rot13(str) {
     }
   });
 
-  console.log(String.fromCharCode.apply(null, resultArr));
+
   return String.fromCharCode.apply(null, resultArr);
 }
 rot13('SERR YBIR?');
