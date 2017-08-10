@@ -89,6 +89,7 @@ function mutation(arr) {
     }
   }
   console.log('tracker', tracker);
+  console.log('changes to test the merging');
   return tracker;
 }
 mutation(['hello', 'hl']);
@@ -112,3 +113,7 @@ function rot13(str) {
   return String.fromCharCode.apply(null, resultArr);
 }
 rot13('SERR YBIR?');
+
+function blegh() {
+  console.log('another test string')
+}
