@@ -101,6 +101,6 @@ function BLARG() {
 function BLARG() {
   console.log('another test string')
 }
-function BLARG() {
+function BLARGERRRRR() {
   console.log('another test string')
 }
