@@ -110,3 +110,9 @@ function rot13(str) {
   console.log(String.fromCharCode.apply(null, resultArr));
   return String.fromCharCode.apply(null, resultArr);
 }
+
+const testFunc = (a, b) => {
+  return a + b;
+}
+
+testFunc(2,4);
